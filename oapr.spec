@@ -2,16 +2,19 @@ Summary:	C++ wrapper on apr
 Summary(pl):	Wrapper C++ na apr
 Name:		oapr
 Version:	0.1
-Release:	0.1
+Release:	1
 Epoch:		0
-License:	GPL
+License:	Apache Software License v1.1
 Group:		Libraries
 Source0:	http://www.openaether.org/builds/%{name}-%{version}.tar.gz
 # Source0-md5:	8a8ceacd948a7613b233c86ef8f07ca8
+Patch0:		%{name}-link.patch
 URL:		http://www.openaether.org/
 BuildRequires:	apr-util-devel
-BuildRequires:	boost-devel
-BuildRequires:	xerces-c-devel
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
+BuildRequires:	boost-utility-devel
+BuildRequires:	libtool >= 2:1.4d-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,33 +26,45 @@ oapr jest wrapperem C++ dla biblioteki C apr. Ten pakiet zawiera
 biblioteki dzielone.
 
 %package devel
-Summary:	Header files for oapr library
-Summary(pl):	Pliki nag³ówkowe biblioteki oapr
+Summary:	Header files for oapr libraries
+Summary(pl):	Pliki nag³ówkowe bibliotek oapr
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	apr-devel
+Requires:	boost-utility-devel
 
 %description devel
-Header files for oapr library.
+Header files for oapr libraries.
 
 %description devel -l pl
-Pliki nag³ówkowe biblioteki oapr.
+Pliki nag³ówkowe bibliotek oapr.
 
 %package static
-Summary:	Static oapr library
-Summary(pl):	Statyczna biblioteka oapr
+Summary:	Static oapr libraries
+Summary(pl):	Statyczne biblioteki oapr
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
-Static oapr library.
+Static oapr libraries.
 
 %description static -l pl
-Statyczna biblioteka oapr.
+Statyczne biblioteki oapr.
 
 %prep
 %setup -q
+%patch0 -p1
+
+# extract OAPR_*
+tail -n +4515 aclocal.m4 > acinclude.m4
 
 %build
+# need libtoolize (C++ linking)
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--with-apr=%{_bindir} \
 	--with-apu=%{_bindir}
@@ -75,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/*-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/oapr
