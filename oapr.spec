@@ -1,15 +1,14 @@
 Summary:	C++ wrapper on apr
 Summary(pl):	Wrapper C++ na apr
 Name:		oapr
-Version:	0.1
-Release:	2
+Version:	0.1.3
+Release:	0.1
 Epoch:		0
 License:	Apache Software License v1.1
 Group:		Libraries
 #Source0Download: http://www.openaether.org/download.html
 Source0:	http://www.openaether.org/builds/%{name}-%{version}.tar.gz
-# Source0-md5:	63e2066c934aebc5b0725bcaaf5522d9
-Patch0:		%{name}-link.patch
+# Source0-md5:	c74b89e733ec33a65369ec020b4f16ba
 URL:		http://www.openaether.org/
 BuildRequires:	apr-util-devel
 BuildRequires:	autoconf >= 2.50
@@ -54,21 +53,19 @@ Statyczne biblioteki oapr.
 
 %prep
 %setup -q
-%patch0 -p1
-
-# extract OAPR_*
-tail -n +4515 aclocal.m4 > acinclude.m4
 
 %build
 # need libtoolize (C++ linking)
+mkdir -p config
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
 	--with-apr=%{_bindir} \
-	--with-apu=%{_bindir}
+	--with-apr-util=%{_bindir}
+
 %{__make} \
 	CXXFLAGS="%{rpmcflags}"
 
