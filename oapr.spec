@@ -2,13 +2,13 @@ Summary:	C++ wrapper on apr
 Summary(pl):	Wrapper C++ na apr
 Name:		oapr
 Version:	0.1
-Release:	1
+Release:	2
 Epoch:		0
 License:	Apache Software License v1.1
 Group:		Libraries
 #Source0Download: http://www.openaether.org/download.html
 Source0:	http://www.openaether.org/builds/%{name}-%{version}.tar.gz
-# Source0-md5:	8a8ceacd948a7613b233c86ef8f07ca8
+# Source0-md5:	63e2066c934aebc5b0725bcaaf5522d9
 Patch0:		%{name}-link.patch
 URL:		http://www.openaether.org/
 BuildRequires:	apr-util-devel
