@@ -6,6 +6,7 @@ Release:	1
 Epoch:		0
 License:	Apache Software License v1.1
 Group:		Libraries
+#Source0Download: http://www.openaether.org/download.html
 Source0:	http://www.openaether.org/builds/%{name}-%{version}.tar.gz
 # Source0-md5:	8a8ceacd948a7613b233c86ef8f07ca8
 Patch0:		%{name}-link.patch
@@ -13,7 +14,7 @@ URL:		http://www.openaether.org/
 BuildRequires:	apr-util-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	boost-utility-devel
+BuildRequires:	boost-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -31,7 +32,7 @@ Summary(pl):	Pliki nag³ówkowe bibliotek oapr
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	apr-devel
-Requires:	boost-utility-devel
+Requires:	boost-devel
 
 %description devel
 Header files for oapr libraries.
