@@ -10,6 +10,7 @@ Source0:	http://www.openaether.org/builds/%{name}-%{version}.tar.gz
 # Source0-md5:	8a8ceacd948a7613b233c86ef8f07ca8
 URL:		http://www.openaether.org/
 BuildRequires:	apr-util-devel
+BuildRequires:	boost-devel
 BuildRequires:	xerces-c-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,7 +53,8 @@ Statyczna biblioteka oapr.
 %configure \
 	--with-apr=%{_bindir} \
 	--with-apu=%{_bindir}
-%{__make}
+%{__make} \
+	CXXFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -68,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
