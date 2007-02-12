@@ -1,5 +1,5 @@
 Summary:	C++ wrapper on nspr
-Summary(pl):	Wrapper C++ na nspr
+Summary(pl.UTF-8):   Wrapper C++ na nspr
 Name:		oapr
 Version:	0.2.1
 Release:	0.1
@@ -22,13 +22,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 oapr is wrapper on nspr libraries. This package contains shared
 libraries.
 
-%description -l pl
+%description -l pl.UTF-8
 oapr jest wrapperem bibliotek nspr. Ten pakiet zawiera biblioteki
-wspÛ≥dzielone.
+wsp√≥≈Çdzielone.
 
 %package devel
 Summary:	Header files for oapr libraries
-Summary(pl):	Pliki nag≥Ûwkowe bibliotek oapr
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe bibliotek oapr
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	boost-devel
@@ -37,19 +37,19 @@ Requires:	nspr-devel
 %description devel
 Header files for oapr libraries.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe bibliotek oapr.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe bibliotek oapr.
 
 %package static
 Summary:	Static oapr libraries
-Summary(pl):	Statyczne biblioteki oapr
+Summary(pl.UTF-8):   Statyczne biblioteki oapr
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static oapr libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki oapr.
 
 %prep
