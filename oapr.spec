@@ -1,5 +1,5 @@
 Summary:	C++ wrapper on nspr
-Summary(pl.UTF-8):   Wrapper C++ na nspr
+Summary(pl.UTF-8):	Wrapper C++ na nspr
 Name:		oapr
 Version:	0.2.1
 Release:	0.1
@@ -28,7 +28,7 @@ współdzielone.
 
 %package devel
 Summary:	Header files for oapr libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek oapr
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek oapr
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	boost-devel
@@ -42,7 +42,7 @@ Pliki nagłówkowe bibliotek oapr.
 
 %package static
 Summary:	Static oapr libraries
-Summary(pl.UTF-8):   Statyczne biblioteki oapr
+Summary(pl.UTF-8):	Statyczne biblioteki oapr
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
